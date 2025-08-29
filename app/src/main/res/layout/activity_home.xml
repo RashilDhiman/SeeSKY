@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:id="@+id/rootLayout">
+
+    <!-- App Bar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="404dp"
+        android:layout_height="10dp"
+        android:background="@android:color/transparent"
+        android:elevation="6dp"
+        android:title="Weather App"
+        android:titleTextColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <!-- Location Text (City Name) -->
+
+    <!-- Weather Icon -->
+    <TextView
+        android:id="@+id/locationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
+
+
+    <ImageView
+        android:id="@+id/weatherIcon"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/rounded_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationTextView"/>
+
+
+
+    <!-- Current Temperature -->
+    <TextView
+        android:id="@+id/temperatureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="56sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/weatherIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Weather Condition Text (Sunny, Cloudy, etc.) -->
+    <TextView
+        android:id="@+id/weatherConditionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Humidity & Wind Speed -->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherConditionTextView">
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="16dp"
+            android:layout_height="20dp"
+            android:contentDescription="Humidity Icon"
+            app:srcCompat="@drawable/humidity_percentage_24dp_e8eaed_fill0_wght400_grad0_opsz24" />
+
+        <TextView
+            android:id="@+id/humidityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="Wind Speed Icon"
+            app:srcCompat="@drawable/air_24dp_e8eaed_fill0_wght400_grad0_opsz24" />
+
+        <TextView
+            android:id="@+id/windSpeedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+    </LinearLayout>
+
+
+    <!-- Forecast Scroll View -->
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/forecastScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="58dp"
+        android:background="@drawable/blurred_background"
+        android:paddingTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:id="@+id/forecastLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp">
+
+            <!-- Forecast Items (5) -->
+            <!-- Repeat forecast items as shown earlier -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/forecast_item_background"
+                android:elevation="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Weather Icon -->
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/weather_icon_png_11102" />
+
+                <!-- Forecast Details -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <!-- Day and Date -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Tomorrow, Jan 15"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- Temperature -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="75°F"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!-- Weather Description -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sunny"
+                        android:textColor="@android:color/holo_orange_light"
+                        android:textSize="14sp"
+                        android:textStyle="italic" />
+
+                    <!-- Additional Info: Humidity & Wind -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <!-- Humidity Icon -->
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:srcCompat="@drawable/humidity_percentage_24dp_e8eaed_fill0_wght400_grad0_opsz24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="Humidity: 60%"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp" />
+
+                        <!-- Wind Icon -->
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="10dp"
+                            app:srcCompat="@drawable/air_24dp_e8eaed_fill0_wght400_grad0_opsz24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="Wind: 15 km/h"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- View More Button -->
+            <TextView
+                android:id="@+id/viewMoreText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View More"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:background="?attr/selectableItemBackground" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
